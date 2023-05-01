@@ -10,17 +10,15 @@ app = Flask(__name__)
 def index():
   return 'Server Works!'
   
-@app.route('/greet')
+@app.route('/versioncheck')
 def say_hello():
   return 'Hello from Server'
     
  #adding variables
-@app.route('/greet/<groupid>/<artifact>')
+@app.route('/versioncheck/<groupid>/<artifact>')
 def get_latest(groupid,artifact):
   #returns the groupid
 
-  g="org.springframework.webflow"
-  a="org.springframework.webflow"
   endpoint_url = "https://search.maven.org/solrsearch/select?q=g:"+groupid+"%20AND%20a:"+artifact+"%20&rows=20&wt=json"
   
   response = requests.get(endpoint_url)
